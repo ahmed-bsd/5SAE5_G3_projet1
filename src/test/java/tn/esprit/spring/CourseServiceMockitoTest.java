@@ -32,6 +32,7 @@ public class CourseServiceMockitoTest {
     List<Course> listCourses = new ArrayList<Course>() {
         {
             add(new Course(7, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,20.2f,2));
+
             add(new Course(5, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,156.2f,2));
         }
     };
