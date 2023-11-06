@@ -1,7 +1,7 @@
 package tn.esprit.spring;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,17 +28,18 @@ public class CourseServiceMockitoTest {
     @InjectMocks //cest la classe qu'on va la tester
     CourseServicesImpl courseServices;
 
-    Course course = new Course(2L,2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
+    Course course = new Course(2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
     List<Course> listCourses = new ArrayList<Course>() {
         {
-            add(new Course(2L,7, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,20.2f,2));
-            add(new Course(3L,5, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,156.2f,2));
+            add(new Course(7, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,20.2f,2));
+            add(new Course(5, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,156.2f,2));
         }
     };
     @Test
     public void testerRetriveCourses(){
         Mockito.when(courseRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(course));
-        Course course1 =courseServices.retrieveCourse( 4L);
+        Course course1 =courseServices.retrieveCourse( 1L);
         Assertions.assertNotNull(course1);
     }
+
 }
