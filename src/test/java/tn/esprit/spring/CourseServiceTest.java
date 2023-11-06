@@ -1,4 +1,4 @@
-package tn.esprit.spring.services;
+package tn.esprit.spring;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Support;
 import tn.esprit.spring.entities.TypeCourse;
+import tn.esprit.spring.services.ICourseServices;
 
 import java.util.List;
 

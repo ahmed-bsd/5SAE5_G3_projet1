@@ -1,4 +1,4 @@
-package tn.esprit.spring.services;
+package tn.esprit.spring;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -12,6 +12,7 @@ import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Support;
 import tn.esprit.spring.entities.TypeCourse;
 import tn.esprit.spring.repositories.ICourseRepository;
+import tn.esprit.spring.services.CourseServicesImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.Optional;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class CourseServiceTestMockito {
+public class CourseServiceMockitoTest {
 
     @Mock //la classe Mocké
     ICourseRepository courseRepository;
@@ -27,7 +28,7 @@ public class CourseServiceTestMockito {
     @InjectMocks //cest la classe qu'on va la tester
     CourseServicesImpl courseServices;
 
-    Course course = new Course(1L,2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
+    Course course = new Course(2L,2, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,15.2f,2);
     List<Course> listCourses = new ArrayList<Course>() {
         {
             add(new Course(2L,7, TypeCourse.INDIVIDUAL, Support.SNOWBOARD,20.2f,2));
@@ -35,9 +36,9 @@ public class CourseServiceTestMockito {
         }
     };
     @Test
-    public void testerRetriveAllCourses(){
+    public void testerRetriveCourses(){
         Mockito.when(courseRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(course));
-        Course course1 =courseServices.retrieveCourse(2L);
+        Course course1 =courseServices.retrieveCourse( 4L);
         Assertions.assertNotNull(course1);
     }
 }
