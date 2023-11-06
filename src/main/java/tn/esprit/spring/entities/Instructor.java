@@ -31,4 +31,18 @@ public class Instructor implements Serializable {
 	LocalDate dateOfHire;
 	@OneToMany
 	Set<Course> courses;
+
+	/*public Instructor(Long numInstructor, String firstName, String lastName, LocalDate dateOfHire) {
+		this.numInstructor = numInstructor;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfHire = dateOfHire;
+	}*/
+	public Instructor( String firstName, String lastName, LocalDate dateOfHire) {
+
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfHire = dateOfHire;
+	}
+
 }
