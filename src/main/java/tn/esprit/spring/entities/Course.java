@@ -32,8 +32,8 @@ public class Course implements Serializable {
 	int timeSlot;
 
 	@JsonIgnore
-	@OneToMany(mappedBy= "course")
-	Set<Registration> registrations;
+	@OneToMany(mappedBy= "course") //sonar 
+	private Set<Registration> registrations;
 
 	public Course( int level, TypeCourse typeCourse, Support support, Float price, int timeSlot) {
 		this.level = level;
