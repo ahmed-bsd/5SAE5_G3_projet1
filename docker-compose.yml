@@ -1,18 +1,29 @@
-version: "3.8"
+version: '3'
 services:
-  # MySQL Database
-  mysqldb:
+  mysql-db:
     image: mysql:latest
+    container_name: docker-compose-mysql-db
     ports:
-      - 3307:3306
+      - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: MonMotDePasseSecret123!
-      MYSQL_DATABASE: stationSki
-      MYSQL_USER: root
-      MYSQL_PASSWORD:
-    volumes:
-      - db:/var/lib/mysql
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=stationSki
+    networks:
+      - my-network
 
+  spring-boot-app:
+    image: khouloudorfi/estion-station-ski:latest
+    container_name: docker-compose-spring-boot
+    ports:
+      - "8089:8089"
+    depends_on:git 
+      - mysql-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:jdbc:mysql://localhost:3306/stationSki?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+    networks:
+      - my-network
 
-volumes:
-  db:
+networks:
+  my-network:
