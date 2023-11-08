@@ -1,12 +1,18 @@
 version: "3.8"
 services:
+  # MySQL Database
   mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
+    image: mysql:latest
     ports:
-      - "3307:3306"
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: stationSki
+      MYSQL_USER: root
+      MYSQL_PASSWORD:
     volumes:
       - db:/var/lib/mysql
+
 
 volumes:
   db: {}
